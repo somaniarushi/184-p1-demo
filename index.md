@@ -6,7 +6,7 @@
 - Explain how your algorithm is no worse than one that checks each sample within the bounding box of the triangle.
     - Our algorithm actually does just check each sample within the bounding box of the triangle, with nested for loops that run from the minimum to maximum given vertex x and y values.
 - Show a *png* screenshot of *basic/test4.svg* with the default viewing parameters and with the pixel inspector centered on an interesting part of the scene.
-![](/img/writeup/image1.png)
+![](/img/image1.png)
 
 ## Task 2 (20 pts)
 - Walk through your supersampling algorithm and data structures. Why is supersampling useful? What modifications did you make to the rasterization pipeline in the process? Explain how you used supersampling to antialias your triangles.
@@ -24,10 +24,9 @@
     - How we used supersampling to antialias our triangles?
         - we used supersampling to antialias our triangles by taking more samples per pixel within the bounding box of the triangle to smooth out transitions in colors on the screen. It particularly helps smooth sharp edges and corners in the images.
 - Show *png* screenshots of *basic/test4.svg* with the default viewing parameters and sample rates 1, 4, and 16 to compare them side-by-side. Position the pixel inspector over an area that showcases the effect dramatically; for example, a very skinny triangle corner. Explain why these results are observed.
-![](https://paper-attachments.dropbox.com/s_31E418C4698438C0F670A15712DF85A5C1A9B10DA0219BC3DD8DB1B1EAFA3459_1644958146878_screenshot_2-15_12-45-42.png)
-![](https://paper-attachments.dropbox.com/s_31E418C4698438C0F670A15712DF85A5C1A9B10DA0219BC3DD8DB1B1EAFA3459_1644958146885_screenshot_2-15_12-45-54.png)
-
-![](https://paper-attachments.dropbox.com/s_31E418C4698438C0F670A15712DF85A5C1A9B10DA0219BC3DD8DB1B1EAFA3459_1644958146897_screenshot_2-15_12-46-6.png)
+![](/img/image2.png)
+![](/img/image3.png)
+![](/img/image4.png)
 
 - Why we observe these results
     - the more samples we take per pixel, the better the final rendered color will blend into the surrounding pixels and the image’s edges will blur out. When we only sample once per pixel, there is clearly no gradual attempt to blend colors (as seen in the pixel inspector), so the corner of the triangle appears very jagged and even discontinuous. On the other hand, for 4 and 16 samples per pixel, we see pixels in the pixel inspector that take on colors between red and white, which allow for a “softer” appearance and more natural edges/lines than just singular sampling can achieve.
@@ -36,7 +35,7 @@
 ## Task 3 (10 pts)
 - Create an updated version of *svg/transforms/robot.svg* with cubeman doing something more interesting, like waving or running. Feel free to change his colors or proportions to suit your creativity. Save your *svg* file as *my_robot.svg* in your *docs/* directory and show a *png* screenshot of your rendered drawing in your write-up. Explain what you were trying to do with cubeman in words.
     - **Air traffic controller who’s blasting jams through their noise-cancelling headphones**: I was trying to angle the left arm up in a waving position and have the right leg kick back at an angle
-![](https://paper-attachments.dropbox.com/s_31E418C4698438C0F670A15712DF85A5C1A9B10DA0219BC3DD8DB1B1EAFA3459_1644959234402_screenshot_2-15_13-6-58.png)
+![](/img/image5.png)
 
 
 
@@ -45,12 +44,12 @@
     - Barycentric coordinates are a coordinate system in which any point in two-dimensional space is described as the weighted combination of the vertices of some given triangle. These weights are known as `alpha`, `beta` and `gamma` values of the given coordinate. The sum of these coordinate weights is always 1.
 
 
-![a triangle with the vertices being colored red, blue and green.](https://paper-attachments.dropbox.com/s_FC80D83E19746C4E16342D2040CF0C3495191F5DA077DCA476BE82EB85BF720F_1644967235933_screenshot_2-15_15-20-26.png)
+![a triangle with the vertices being colored red, blue and green.](/img/image6.png)
 
 
 
 - Show a *png* screenshot of *svg/basic/test7.svg* with default viewing parameters and sample rate 1. If you make any additional images with color gradients, include them.
-![](https://paper-attachments.dropbox.com/s_31E418C4698438C0F670A15712DF85A5C1A9B10DA0219BC3DD8DB1B1EAFA3459_1644959340731_screenshot_2-15_13-8-40.png)
+![](/img/image7.png)
 
 
 
@@ -59,16 +58,16 @@
 
 Pixel sampling is, stated coarsely, the concept of getting Color (rgb) values for certain pixel locations of a texture. To get the actual pixel value of a texture is not a complicated process — one just has to return the `texel` value of that location. However, pixel sampling has different methods, and we shall discuss two of them here: nearest neighbor and bilinear sampling. The idea of nearest neighbor is to return the color of the nearest `texel` to the given location. The idea of bilinear sampling is to get the color of the four nearest pixels, then return the `texel` representing their weighted average. One implementation detail to mention here: The passed-in argument `uv` is technically in the range of [0, 1] – it’s a weight, not an actual measure of the location on the texture space, and must therefore be scaled by the height and width of the texture in both cases.
 
-![Nearest sampling](https://paper-attachments.dropbox.com/s_FC80D83E19746C4E16342D2040CF0C3495191F5DA077DCA476BE82EB85BF720F_1644964924895_screenshot_2-15_14-35-5.png)
-![Bilinear sampling](https://paper-attachments.dropbox.com/s_FC80D83E19746C4E16342D2040CF0C3495191F5DA077DCA476BE82EB85BF720F_1644964924914_screenshot_2-15_14-41-14.png)
+![Nearest sampling](/img/image8.png)
+![Bilinear sampling](/img/image9.png)
 
 
 
-![Nearest sampling, 1 sample/pixel](https://paper-attachments.dropbox.com/s_FC80D83E19746C4E16342D2040CF0C3495191F5DA077DCA476BE82EB85BF720F_1644965020032_screenshot_2-15_14-43-1.png)
-![Nearest sampling, 16 samples/pixel](https://paper-attachments.dropbox.com/s_FC80D83E19746C4E16342D2040CF0C3495191F5DA077DCA476BE82EB85BF720F_1644965020055_screenshot_2-15_14-43-16.png)
+![Nearest sampling, 1 sample/pixel](/img/image10.png)
+![Nearest sampling, 16 samples/pixel](/img/image11.png)
 
-![Bilinear sampling, 1 sample/pixel](https://paper-attachments.dropbox.com/s_FC80D83E19746C4E16342D2040CF0C3495191F5DA077DCA476BE82EB85BF720F_1644965020083_screenshot_2-15_14-43-6.png)
-![Bilinear sampling, 16 samples/pixel](https://paper-attachments.dropbox.com/s_FC80D83E19746C4E16342D2040CF0C3495191F5DA077DCA476BE82EB85BF720F_1644965020103_screenshot_2-15_14-43-23.png)
+![Bilinear sampling, 1 sample/pixel](/img/image12.png)
+![Bilinear sampling, 16 samples/pixel](/img/image13.png)
 
 
 I find that the biggest difference is in when there are sharp lines between two colors — like in the letters in the images above. Notice how the word “Berkeley” looks jagged in nearest sampling, and clearer and smoother in bilinear sampling.
@@ -86,11 +85,11 @@ Tradeoff comparisons
 
 
 
-![Zero Level, Nearest Pixel Sampling](https://paper-attachments.dropbox.com/s_31E418C4698438C0F670A15712DF85A5C1A9B10DA0219BC3DD8DB1B1EAFA3459_1644969778613_screenshot_2-15_16-0-50.png)
-![Zero Level, Bilinear Pixel Sampling](https://paper-attachments.dropbox.com/s_31E418C4698438C0F670A15712DF85A5C1A9B10DA0219BC3DD8DB1B1EAFA3459_1644969811807_screenshot_2-15_16-0-54.png)
+![Zero Level, Nearest Pixel Sampling](/img/image14.png)
+![Zero Level, Bilinear Pixel Sampling](/img/image15.png)
 
-![Nearest Level, Nearest Pixel Sampling](https://paper-attachments.dropbox.com/s_31E418C4698438C0F670A15712DF85A5C1A9B10DA0219BC3DD8DB1B1EAFA3459_1644969822372_screenshot_2-15_16-1-8.png)
-![Bilinear Level Interpolation, Nearest Pixel Sampling](https://paper-attachments.dropbox.com/s_31E418C4698438C0F670A15712DF85A5C1A9B10DA0219BC3DD8DB1B1EAFA3459_1644969837791_screenshot_2-15_16-1-15.png)
+![Nearest Level, Nearest Pixel Sampling](/img/image16.png)
+![Bilinear Level Interpolation, Nearest Pixel Sampling](/img/image17.png)
 
 
 
